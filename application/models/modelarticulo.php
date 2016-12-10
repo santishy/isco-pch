@@ -17,6 +17,38 @@ class ModelArticulo extends CI_Model {
 		return $query;
 
 	}
+	function createShoppingCart()
+	{
+		$data['status']="incompleto";
+		$data['created_at']=date("Y-m-d H:i:s");  
+		$query=$this->db->insert('shopping_carts',$data);
+		return $this->maxIdShoppingCarts();
+	}
+	function maxIdShoppingCarts()
+	{
+		$query=$this->db->query('select  id from shopping_carts order by id desc limit 1');
+		foreach ($query->result() as $row) {
+			$id=$row->id;
+		}
+		return $id;
+	}
+	function updateInShoppingCart($id_articulo,$data)
+	{
+		$this->db->where('id_articulo',$id_articulo);
+		$query=$this->db->update('in_shopping_carts',$data);
+		return $query;
+	}
+	function deleteInShoppingCart($id_articulo,$shopping_cart_id)
+	{
+		$query=$this->db->query('delete from in_shopping_carts where
+								id_articulo='.$id_articulo.' and 
+								shopping_cart_id='.$shopping_cart_id);
+	}
+	function inShoppingCarts($data)
+	{
+		$query=$this->db->insert('in_shopping_carts',$data);
+		return $query;
+	}
 	function getNamePaquetes()
 	{
 		$query=$this->db->get('paquetes');
@@ -506,7 +538,7 @@ function getArticlesRangoL($id,$precio,$precioF,$ban,$inicio,$tope,$linea)
 	{
 		$caracteres=array('""','"',"''","'");
 		if($data['moneda'] != 'MN'){
-			$data['moneda'] = 'MN';
+			//$data['moneda'] = 'MN';
 			$data['precio'] = $data['precio'] * $dollar;
 		}
 		$query=$this->db->query('call updateStore("'.$fecha.'","'.str_replace($caracteres,'',$data['sku']).'","'.str_replace($caracteres,'',$data['descripcion']).'",'.$data['precio'].',"'.str_replace($caracteres,'', $data['moneda']).'",'.$inventario['almacen'].','.$inventario['existencia'].',"'.str_replace($caracteres,'',$data['linea']).'","'.str_replace($caracteres,'',$data['marca']).'","'.str_replace($caracteres,'',$data['seccion']).'","'.str_replace($caracteres,'',$data['skuFabricante']).'");');

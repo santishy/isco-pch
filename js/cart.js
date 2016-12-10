@@ -66,6 +66,7 @@ $(function(){
 				response = JSON.parse(response);
 				getElements();
 				if(response.ban == 1 || response.ban == '1'){
+					$("#btnConfirmPass").data('cartid',response.shopping_cart_id);
 					$('#pMsjVacio').text('');
 					$('#btnConfirmPass').removeAttr('disabled');
 					/* creating element for add to shopping cart */
@@ -233,7 +234,7 @@ $(function(){
 // de aqui empiezan mi codigo
 $("#btnConfirmPass").on('click',function()
 	{
-		window.location.href=$(this).data('ruta');
+		window.location.href=$(this).data('ruta')+$(this).data('cartid');
 	});
 });
 function enviarCotizacion()

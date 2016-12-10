@@ -121,7 +121,7 @@ class Inicio extends CI_controller {
 				}
 				else
 				{		// Muestra el resultado
-						var_dump($result);
+				
 						date_default_timezone_set('America/Monterrey');
 						$fecha=date('Y-m-d');
 					  	$id_dolar=0;
@@ -194,7 +194,7 @@ class Inicio extends CI_controller {
 				"0012code"
 
 			));
-			print_r($result);
+		
 		}
 		catch(Exception $ex){
 			 print_r($ex->getMessage());

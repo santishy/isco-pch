@@ -4,13 +4,16 @@ $(function(){
 	$('img').error(function(){
 		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toUpperCase()+".jpg").error(function(){
 		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toLowerCase()+'.jpg').error(function(){
+		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toUpperCase()+'.png').error(function(){
+		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toLowerCase()+'.png').error(function(){
 			$(this).unbind("error").attr('src',rutaExterna+"uploads/"+$(this).data('sku')+".jpg").error(function(){
-			console.log("sku:"+$(this).data('sku'))
-			$(this).unbind("error").attr('src',ruta+"img/broken.jpg");
+			$(this).unbind("error").attr('src',"http://iscocomputadoras.com/img/broken.jpg");
 		});
 	});
 });
 });
+});});
+
 	/*$('img').error(function(){
 		$(this).unbind("error").attr('src',ruta+"img/broken.jpg");
 	});

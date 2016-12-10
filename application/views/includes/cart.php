@@ -70,9 +70,9 @@
           $arr=$this->cart->contents();
             if(count($arr) > 0){
          ?>
-            <button type="button" class="btnConfirmPass btn btn-primary" id="btnConfirmPass" data-ruta="<?=base_url()?>envios/registrarUsuario">Siguiente Paso</button>
+            <button type="button" class="btnConfirmPass btn btn-primary" id="btnConfirmPass" data-ruta="http://localhost/pch/public/pagos/" data-cartid="<?=$this->session->userdata('shopping_cart_id')?>">Siguiente Paso</button>
         <?php } else { ?>
-            <button type="button" class="btnConfirmPass btn btn-primary" id="btnConfirmPass" data-ruta="<?=base_url()?>envios/registrarUsuario" disabled>Siguiente Paso</button>
+            <button type="button" class="btnConfirmPass btn btn-primary" id="btnConfirmPass" data-ruta="http://localhost/pch/public/pagos/" disabled>Siguiente Paso</button>
        <?php } ?>
         <button type="button" class="btn btn-default btnClose" id="btnClose" data-dismiss="modal">Seguir comprando</button>
       </div>
@@ -108,7 +108,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" id="btnEnviarCotizacion" class="btn btn-primary" data-ruta="<?=base_url()?>envios/crearNota">Enviar</button>
+        <button type="button" id="btnEnviarCotizacion" class="btn btn-primary" data-ruta="<?=base_url()?>envios/crearNota" >Enviar</button>
       </div>
     </div>
   </div>

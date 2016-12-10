@@ -177,7 +177,11 @@ class Productos extends CI_Controller {
 			if(strcmp($vec['moneda'], "MN") != 0){
 				$vec['precio'] = $vec['precio'] * $this->session->userdata('cambio');
 			}
-			$data['costo'] = ceil((($vec['precio']+(($vec['precio']*$vec['utilidad']))/100) )* 1.16);
+			$data['costo']=$this->funciones->precio($vec['utilidad'],0,$vec['precio'],$vec['descuento']);
+			/*$data['costo']=($vec['precio']*$vec['utilidad'])/100;
+			$data['costo']=$data['costo']+$vec['precio'];
+			$data['costo']=ceil($data['costo']*1.16);*/
+			//$data['costo'] = ceil((($vec['precio']+(($vec['precio']*$vec['utilidad']))/100) )* 1.16);
 			if($vec['exis']=="")
 				$vec['exis']=0;
 			$data['existencia'] = $vec['exis'];

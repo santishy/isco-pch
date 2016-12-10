@@ -6,6 +6,7 @@ class Cart extends CI_Controller {
 		parent::__construct();
 		$this->load->model('ModelArticulo');
 		$this->load->library('cart');
+		$this->load->library('session');
 	}
 
 	public function index()
@@ -14,35 +15,7 @@ class Cart extends CI_Controller {
 	}
 
 	function addCart(){
-
 		$cant = 0; $arr=array();
-		/*foreach ($this->cart->contents() as $item) {
-			if($item['id'] == $this->input->post('id_articulo')){
-
-				$cant = $this->input->post('txtCantidad') + $item['qty'];
-				if($cant <= $item['existencia'])
-				{
-					$data = array(
-			 			'rowid' => $item['rowid'],
-			 			'qty' => $cant
-			 		);
-
-			 		$this->cart->update($data);
-			 		$arr=$this->cart->contents();
-			 		$vec = array('ban' => 2 , 'valor' => $cant , 'qty' => $item['qty'] ,'codigo' => $this->input->post('id_articulo'));
-					echo json_encode($vec);
-					exit();
-				}
-				else
-				{
-					$vec = array('ban' => 0 , 'valor' => 0);
-					echo json_encode($vec);
-					exit();
-				}
-				
-			}
-			
-		}*/
 		if($this->input->post('txtCantidad') <= $this->input->post('txtExis'))
 		{
 			$data=array('id' => $this->input->post('id_articulo'),
@@ -56,14 +29,28 @@ class Cart extends CI_Controller {
 			'moneda'=>$this->input->post('moneda'));
 
 			$this->cart->insert($data);
+			if(!$this->session->userdata('shopping_cart_id'))
+			{
+				$this->session->set_userdata('shopping_cart_id',$this->ModelArticulo->createShoppingCart());
+			}
+			$data['shopping_cart_id']=$this->session->userdata('shopping_cart_id');
+			unset($data['name']);
+			unset($data['existencia']);
+			unset($data['sku']);
+			unset($data['proveedor']);
+			unset($data['moneda']);
+			$data['id_articulo']=$data['id'];
+			unset($data['id']);
+			$this->ModelArticulo->inShoppingCarts($data);
 			$arr=$this->cart->contents();
 			$this->session->set_userdata('carrito',count($arr));
-			$vec = array('ban' => 1 , 'valor' => count($arr));
+			$vec = array('ban' => 1 , 'valor' => count($arr),
+				'shopping_cart_id'=>$data['shopping_cart_id']);
 			echo json_encode($vec);
 		}
 		else
 			{
-				$vec = array('ban' => 0 , 'valor' => 0);
+				$vec = array('ban' => 0 , 'valor' => 0,'shopping_cart_id'=>$this->session->userdata('shopping_cart_id'));
 				echo json_encode($vec);
 				exit();
 			}
@@ -71,13 +58,19 @@ class Cart extends CI_Controller {
 	function destroyCart(){
 		$this->cart->destroy();
 		$this->session->set_userdata('carrito',0);
+		$this->session->unset_userdata('shopping_cart_id');
 		redirect('inicio/index');
 	}
 
 	function showCart(){
 		
 	}
-
+	function updateInShoppingCart($id_articulo,$cant)
+	{
+		$data['qty']=$cant;
+		$query=$this->ModelArticulo->updateInShoppingCart($id_articulo,$data);
+		return $query;
+	}
 	function update()
 	{
 		$id = $this->input->post('id');
@@ -89,9 +82,14 @@ class Cart extends CI_Controller {
 				/*if($cant > 0)
 					$cant = $cant + $item['qty'];*/
 				if($cant > $exis){
+					$this->updateInShoppingCart($id,$exis);
 					$this->updateCar($item['rowid'],$exis);	
 				}
 				else{
+					if($cant==0)
+						$this->ModelArticulo->deleteInShoppingCart($id,$this->session->userdata('shopping_cart_id'));
+					else 
+						$this->updateInShoppingCart($id,$cant);
 					$this->updateCar($item['rowid'],$cant);
 				}
 				

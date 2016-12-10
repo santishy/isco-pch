@@ -211,12 +211,17 @@ function crearElementos(data,nuevo)
 		}
 		div.appendChild(dataProd);
 		document.querySelector('.fila-seccion').appendChild(div);
-    $('img').error(function(){
-  		$(this).unbind("error").attr('src',rutaExterna+"uploads/"+$(this).data('sku')+".jpg").error(function(){
-  		$(this).unbind("error").attr('src',"http://iscocomputadoras.com/pchimg/"+$(this).data('sku').toLowerCase()+".jpg").error(function(){
-        $(this).unbind("error").attr('src',"http://iscocomputadoras.com/img/broken.jpg")
-      })
-  	});
-  	});
 	}
+   $('img').error(function(){
+		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toUpperCase()+".jpg").error(function(){
+		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toLowerCase()+'.jpg').error(function(){
+		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toUpperCase()+'.png').error(function(){
+		$(this).unbind("error").attr('src',ruta+"pchimg/"+$(this).data('sku').toLowerCase()+'.png').error(function(){
+			$(this).unbind("error").attr('src',rutaExterna+"uploads/"+$(this).data('sku')+".jpg").error(function(){
+			$(this).unbind("error").attr('src',"http://iscocomputadoras.com/img/broken.jpg");
+		});
+	});
+});
+});
+});});
 }

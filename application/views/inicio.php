@@ -29,17 +29,20 @@
 				</ol>-->
 				<div class="carousel-inner" role="listbox">
 					<div class="item ">
+						<a href="http://iscocomputadoras.com/articulos/secciones/9">
+						<img src="<?=base_url()?>banner/24-11-16.jpg" alt="" >
+						<!--<div class="carousel-caption">
+				        	<img src="img/1.jpg" alt="">
+				     	</div>-->
+				     	</a>
+					</div>
+					<div class="item active">
+						<a href="http://iscocomputadoras.com/articulos/secciones/18">
 						<img src="<?=base_url()?>banner/diamuerto.jpg" alt="" >
 						<!--<div class="carousel-caption">
 				        	<img src="img/1.jpg" alt="">
 				     	</div>-->
-
-					</div>
-					<div class="item active">
-						<img src="<?=base_url()?>banner/diamuerto1.jpg" alt="" >
-						<!--<div class="carousel-caption">
-				        	<img src="img/1.jpg" alt="">
-				     	</div>-->
+				     	</a>
 
 					</div>
 				
