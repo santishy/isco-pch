@@ -123,10 +123,10 @@ window._fbq.push(['track', '6035702015202', {'value':'0.00','currency':'MXN'}]);
 				</form>
 			</div>
 			<div class="col-md-2"  style="margin-top:5px;">
-				<a href="<?=htmlspecialchars($loginUrl)?>" class="btn btn-block btn-social btn-facebook">
+				<!--a href="<?=htmlspecialchars($loginUrl)?>" class="btn btn-block btn-social btn-facebook">
 				  <span class="fa fa-facebook"></span>
 				  Registrate
-				</a>
+				</a-->
 				<!--a id="login"  href="#" style="line-height:50px;" data-toggle="modal" data-target=".bs-example-modal-sm">
 					<span >
 						<?php if($this->session->userdata('id_usuario')>0) echo $this->session->userdata('correo'); else echo 'Mi Cuenta'; ?>
@@ -145,7 +145,7 @@ window._fbq.push(['track', '6035702015202', {'value':'0.00','currency':'MXN'}]);
 		</div>
 		<div class="row ">
 		<div class="col-md-12 cabezera">
-			<figure class="col-xs-5 col-sm-4 col-md-2">
+			<figure class="col-xs-5 col-sm-4 col-md-3">
 				<a href="<?=base_url()?>"><img src="<?=base_url()?>img/logotipo.png" alt="Isco Computadoras" class="img-responsive"/></a>
 			</figure>	
 			<input type="checkbox" id="menu">
@@ -176,10 +176,12 @@ window._fbq.push(['track', '6035702015202', {'value':'0.00','currency':'MXN'}]);
 						<?php }?>
 					</ul>
 				</li>
-				<li ><a href="<?=base_url()?>articulos/galeria" STYLE="COLOR:#ff4d94">GALERIA</a></li>
-					    <li style="background-color:#DC143C;">
+				<li >
+					<a href="<?=base_url()?>articulos/galeria" STYLE="COLOR:#ff4d94">GALERIA</a>
+				</li>
+					    <!--li style="background-color:#DC143C;">
 							<a href="<?=base_url()?>articulos/nuevosProductos" id="lnkContacto" data-contacto="<?=base_url()?>articulos/nuevosProductos" style="color:white">LO NUEVO</a>
-						</li>
+						</li-->
 				<li>
 					<a href="#" id="lnkCart" class="lnkCart">
 								<span class="glyphicon glyphicon-shopping-cart icon" aria-hidden="true"></span>
@@ -198,14 +200,14 @@ window._fbq.push(['track', '6035702015202', {'value':'0.00','currency':'MXN'}]);
 	<div class="row">
 			<div class="col-md-12 container-publicidad">
 				<div class="col-md-8" border solid>
-					<p style="width:100%;margin:0px" class="text-center texto-cabezera">Compra en linea, seguro y fácil. ¡Más de 5000 productos!</p>
+					<p style="width:100%;margin:0px" class="text-center texto-cabezera">¡Felices fiestas decembrinas! Te desea ISCO COMPUTADORAS.</p>
 				</div>
 				<div class="col-md-3">
 					<button id="btnInfo"style="height:100%;color:#004d99;" class="btn-default btn btn-block" ><span class="glyphicon glyphicon-envelope"></span> Contáctenos</button>
 				</div>
 			</div>
 			<div class="col-md-12 container-inferior">
-				<a href="<?=base_url()?>productos/getPaquetes">Nuevos Combos ¡Aprovecha nuestras ofertas!</a>
+				<a href="<?=base_url()?>productos/getPaquetes">Combos ISCO</a>
 				<p>Mís búsquedas</p>
 				<button id="list-search" class="btn btn-default btn-default" data-toggle="tooltip" data-placement="bottom" title="Lista"><span class="glyphicon glyphicon-list"></span></button>
 			</div>

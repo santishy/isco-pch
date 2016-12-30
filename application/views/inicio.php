@@ -29,16 +29,24 @@
 				</ol>-->
 				<div class="carousel-inner" role="listbox">
 					<div class="item ">
-						<a href="http://iscocomputadoras.com/articulos/secciones/9">
-						<img src="<?=base_url()?>banner/24-11-16.jpg" alt="" >
+						<a href="http://iscocomputadoras.com/productos/detallesproducto/6219">
+						<img src="<?=base_url()?>banner/27-12.jpg" alt="" >
+						<!--<div class="carousel-caption">
+				        	<img src="img/1.jpg" alt="">
+				     	</div>-->
+				     	</a>
+					</div>
+					<div class="item ">
+						<a href="http://iscocomputadoras.com/productos/detallesproducto/6868">
+						<img src="<?=base_url()?>banner/BANNER2.jpg" alt="" >
 						<!--<div class="carousel-caption">
 				        	<img src="img/1.jpg" alt="">
 				     	</div>-->
 				     	</a>
 					</div>
 					<div class="item active">
-						<a href="http://iscocomputadoras.com/articulos/secciones/18">
-						<img src="<?=base_url()?>banner/diamuerto.jpg" alt="" >
+						<a href="http://iscocomputadoras.com/articulos/secciones/3">
+						<img src="<?=base_url()?>banner/26-12.jpg" alt="" >
 						<!--<div class="carousel-caption">
 				        	<img src="img/1.jpg" alt="">
 				     	</div>-->

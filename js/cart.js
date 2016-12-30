@@ -235,6 +235,7 @@ $(function(){
 $("#btnConfirmPass").on('click',function()
 	{
 		window.location.href=$(this).data('ruta')+$(this).data('cartid');
+		//window.location.href=$(this).data('ruta')+$(this).data('cartid');
 	});
 });
 function enviarCotizacion()

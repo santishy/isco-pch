@@ -861,6 +861,8 @@ function getArticlesRangoL($id,$precio,$precioF,$ban,$inicio,$tope,$linea)
 	function desactivarArticulos()
 	{
 		$this->db->where('id_articulo >',0);
+		$this->db->where('proveedor !=','isco');
+		$this->db->where('proveedor !=','ISCO');
 		$query=$this->db->update('articulos',array("activo"=>0));
 		return $query;
 	}
